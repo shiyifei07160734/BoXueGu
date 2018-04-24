@@ -85,7 +85,7 @@ public class MainViewCourseFragment extends Fragment  {
         rv_list=view.findViewById(R.id.rv_list);
         adapter=new CourseListItemAdapter(getActivity());
         adapter.setData(rList);
-        rv_list.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        rv_list.setLayoutManager(new GridLayoutManager(getActivity(),3));
         rv_list.setAdapter(adapter);
       vp_adverBanner=view.findViewById(R.id.vp_adverBanner);
       rl_adBanner=view.findViewById(R.id.rl_adBanner);
