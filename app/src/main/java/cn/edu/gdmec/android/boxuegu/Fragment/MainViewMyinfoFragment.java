@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import cn.edu.gdmec.android.boxuegu.activity.ActivityPlayHistoryActivity;
 import cn.edu.gdmec.android.boxuegu.R;
 import cn.edu.gdmec.android.boxuegu.activity.LoginActivity;
 import cn.edu.gdmec.android.boxuegu.activity.SettingActivity;
@@ -68,7 +69,8 @@ public class MainViewMyinfoFragment extends Fragment  implements View.OnClickLis
             break;
         case R.id.rl_course_history:
             if (AnalysisUtils.readLoginStats(getActivity())){
-
+                    Intent intent=new Intent(getActivity(), ActivityPlayHistoryActivity.class);
+                    getActivity().startActivity(intent);
             }else {
                 Toast.makeText(getActivity(),"您还未登录，请先登录",Toast.LENGTH_SHORT).show();
             }
