@@ -89,17 +89,24 @@ public class ActivityVideoListActivity extends Activity  {
             jsonArray = new JSONArray(read(is));
             videoList = new ArrayList<VideoBean>();
             for (int i=0;i<jsonArray.length();i++){
-                VideoBean bean=new VideoBean();
+
                 JSONObject jsonObj=jsonArray.getJSONObject(i);
-                if (jsonObj.getInt("chapterId")==chapterId){
-                    bean.chapterId=jsonObj.getInt("chapterId");
-                    bean.videoId=Integer.parseInt(jsonObj.getString("videoId"));
-                    bean.title=jsonObj.getString("title");
-                    bean.secondTitle=jsonObj.getString("secondTitle");
-                    bean.videoPath=jsonObj.getString("videoPath");
-                    videoList.add(bean);
+                if (jsonObj.getInt("chapterId")==chapterId) {
+
+                    JSONArray jd = jsonObj.getJSONArray("data");
+                    for (int j = 0; j < jd.length(); j++) {
+                        VideoBean bean=new VideoBean();
+                        bean.chapterId=jsonObj.getInt("chapterId");
+                        JSONObject jsonObject=jd.getJSONObject(j);
+                        bean.videoId = jsonObject.getInt("videoId");
+                        bean.title = jsonObject.getString("title");
+                        bean.secondTitle = jsonObject.getString("secondTitle");
+                        bean.videoPath = jsonObject.getString("videoPath");
+                        videoList.add(bean);
+                        bean=null;
+                    }
                 }
-                bean=null;
+
             }
         }catch (IOException e){
             e.printStackTrace();

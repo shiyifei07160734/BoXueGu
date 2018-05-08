@@ -29,5 +29,6 @@
         <activity android:name=".activity.ActivityVideoPlayActivity"/>
         <activity android:name=".activity.ActivityPlayHistoryActivity"/>
     </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 </manifest>
